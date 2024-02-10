@@ -1,0 +1,6 @@
+@media only screen and (min-width: 768px) {
+    .container {
+      max-width: 600px; /* O el ancho deseado para pantallas más grandes */
+      margin: 0 auto; /* Centrar el contenido en pantallas más grandes */
+    }
+  }
