@@ -11,7 +11,7 @@ const Login = () => {
         </div>
         <div className='mt-6'>
           <LoginForm />
-          <Text text="Crear cuenta" color="#df6616" />
+          <Text text="Crear cuenta" desing={ "text-[#df6616] mt-20 mb-4" } />
         </div>
       </div>
     </div>

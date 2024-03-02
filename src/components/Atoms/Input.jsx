@@ -1,9 +1,10 @@
-const Input = ({ type, placeholder }) => {
+const Input = ({ type, placeholder, setState, desing }) => {
   return (
     <input
       type={type}
       placeholder={placeholder}
-      className="border-b text-white border-white bg-black bg-opacity-0  p-2 w-full mb-6 focus:outline-none"
+      className = { `${desing} ` }
+      onChange={ (e) => setState(e.target.value) }
     />
   );
 };

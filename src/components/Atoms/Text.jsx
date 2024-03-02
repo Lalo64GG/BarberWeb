@@ -1,6 +1,6 @@
-const Text = ({ text, color }) => {
+const Text = ({ text, desing }) => {
   return (
-    <p className={`text-[#d66f16] text-2xl text-center mb-4 mt-20`}>
+    <p className={` ${ desing } text-2xl text-center`}>
       {text}
     </p>
   );
