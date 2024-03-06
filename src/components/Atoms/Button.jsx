@@ -21,6 +21,7 @@ const Button = ({ text, children }) => {
       console.log("this is user id: ", data.usuario.uid);
 
       localStorage.setItem('token', data.token);
+      localStorage.setItem('id', data.usuario.uid)
       navigate('/home'); 
     } catch (error) {
       console.log("Algun error sucedio: ", error);

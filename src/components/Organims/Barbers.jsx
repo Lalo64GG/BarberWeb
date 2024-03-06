@@ -7,19 +7,18 @@ import { SearchBard } from "../Molecules/SearchBard";
 import { Card } from "../Molecules/Card";
 
 export const Barbers = () => {
-  const [barber, setBarber] = useState();
+  const [barber, setBarber] = useState([]);
+  const [searchBarber, setSearchBarber] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const consumo = async () => {
-      // Replace 'YOUR_AUTH_TOKEN' with your actual authentication token
       const authToken = localStorage.getItem("token");
-      console.log(authToken);
 
       try {
         const res = await fetch("http://localhost:4000/API/barberia", {
           headers: {
             Authorization: ` ${authToken}`,
-            // You can add other headers if needed
             "Content-Type": "application/json",
           },
         });
@@ -29,7 +28,7 @@ export const Barbers = () => {
         }
 
         const data = await res.json();
-        setBarber(data);
+        setBarber(data.barberias);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
@@ -40,14 +39,31 @@ export const Barbers = () => {
 
   return (
     <div>
-      <div className=" min-h-svh fondo flex justify-center items-center">
+      <div className="min-h-svh fondo flex justify-center items-center">
         <div className="bg-black bg-opacity-70 py-2 px-8 w-full min-h-svh overflow-hidden">
-          <Text text={"Bienvenido"} desing={ "font-bold text-white" }/>
-          <Nav />
-          <SearchBard />
-          {/* {barber.map((barberia, i) => (
-            <Card key={i}  />
-          ))} */}
+          {Array.isArray(searchBarber) && searchBarber.length ? (
+            searchBarber.map((barberia, i) => (
+              <Card key={i} title={ barberia.name} local={ barber.estado } barberia={ barberia } />
+            ))
+          ) : (
+            <div>
+              <Text text={"Bienvenido"} desing={"font-bold text-white"} />
+              <Nav />
+              <SearchBard
+                setSearchBarber={setSearchBarber}
+                search={search}
+                setSearch={setSearch}
+              />
+              {barber.map((barberia, i) => (
+                <Card
+                  key={i}
+                  title={barberia.nombre}
+                  local={barberia.contacto}
+                  barberia={barberia}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
