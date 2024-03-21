@@ -60,6 +60,8 @@ export const Barbers = () => {
                   title={barberia.nombre}
                   local={barberia.contacto}
                   barberia={barberia}
+                  img={barberia.linkImg}
+                  link={barberia.link}
                 />
               ))}
             </div>

@@ -17,6 +17,8 @@ export const Perfil = () => {
   const [servicio, setServicio] = useState()
   const [barberia, setBarberia] = useState()
   const [estado, setEstado] = useState()
+  const [linkImg, setLinkImg] = useState()
+  const [link, setLink] = useState()
 
   const handleShow = () => setShow(true);
   const handleShowCita = () => setShowCita(true);
@@ -35,7 +37,7 @@ export const Perfil = () => {
 
   const handleEnviarServicios = async () => {
 
-    if ([nombre, servicios, horarioLunesViernes, horarioSabadosDomingo, numeroContacto].includes("")) {
+    if ([nombre, servicios, horarioLunesViernes, horarioSabadosDomingo, numeroContacto, link, linkImg].includes("")) {
       alert("Ingrese datos ");
       return;
     }
@@ -50,6 +52,8 @@ export const Perfil = () => {
       horario,
       contacto: numeroContacto,
       reseñas: [],
+      linkImg,
+      link
     };
 
     try {
@@ -75,7 +79,8 @@ export const Perfil = () => {
     const citaObject = {
       servicio,
       horario,
-      barberia
+      barberia,
+
     }
 
     try {
@@ -225,6 +230,37 @@ export const Perfil = () => {
                     type="text"
                     value={estado}
                     onChange={(e) => setEstado(e.target.value)}
+                    className="w-full border border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+
+                <div className="mb-5">
+                <label
+                    htmlFor="numero-contacto"
+                    className="block font-bold text-lg"
+                  >
+                    Ingresa el link de la imagen:
+                  </label>
+                  <input
+                    id="numero-contacto"
+                    type="text"
+                    value={linkImg}
+                    onChange={(e) => setLinkImg(e.target.value)}
+                    className="w-full border border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+                <div className="mb-5">
+                <label
+                    htmlFor="numero-contacto"
+                    className="block font-bold text-lg"
+                  >
+                    Ingresa el link del sitio web:
+                  </label>
+                  <input
+                    id="numero-contacto"
+                    type="text"
+                    value={link}
+                    onChange={(e) => setLink(e.target.value)}
                     className="w-full border border-gray-300 p-2 rounded-md"
                   />
                 </div>

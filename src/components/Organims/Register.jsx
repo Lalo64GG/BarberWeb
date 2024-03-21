@@ -33,7 +33,7 @@ export const Register = () => {
             google
         }
         try {
-            const res = await fetch("", {
+            const res = await fetch("http://localhost:4000/API/usuarios", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

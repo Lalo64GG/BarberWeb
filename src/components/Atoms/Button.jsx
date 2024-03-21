@@ -7,6 +7,10 @@ const Button = ({ text, children }) => {
 
   const handleRequest = async( e ) =>{
     e.preventDefault();
+    if (children == undefined) {
+      alert("Ingrese datos");
+      return;
+    }
     try {
       const response = await fetch('http://localhost:4000/API/auth', {
         method: 'POST',
@@ -16,6 +20,7 @@ const Button = ({ text, children }) => {
         body: JSON.stringify(children),
       });
       const data = await response.json();
+      console.log(data);
       console.log("This is a token: ", data.token);
 
       console.log("this is user id: ", data.usuario.uid);
